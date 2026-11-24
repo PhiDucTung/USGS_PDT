@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "usgs-conus-pipeline"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = ["httpx>=0.28,<0.29", "pyarrow>=18,<27"]
+
+[project.optional-dependencies]
+test = ["pytest>=8,<10"]
+gold = ["pandas>=2.2,<4", "numpy>=2,<3", "geopandas>=1,<2", "shapely>=2,<3", "pyogrio>=0.9,<1", "pyproj>=3.7,<4"]
+
+[project.scripts]
+usgs-pipeline = "usgs_pipeline.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["usgs_pipeline*", "grid_huc*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests", "grid_huc"]

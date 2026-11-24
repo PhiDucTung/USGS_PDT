@@ -1,0 +1,58 @@
+{
+  "checked_at": "2026-11-15T18:52:30.307914+07:00",
+  "status": "awaiting_paper_csv_download_by_user",
+  "real_mapping_created": false,
+  "verification": {
+    "existing_synthetic_suite": "passed",
+    "synthetic_cli_export": "passed",
+    "real_data": "not_run",
+    "matlab": "not_run",
+    "input_preparation_synthetic_checks": "passed",
+    "real_wbd_snapshot": "passed: count, HUC strings, object IDs, CRS, SHA-256; geometry checked on ingestion"
+  },
+  "versions": {
+    "geopandas": "1.2.0",
+    "shapely": "2.2.0",
+    "pandas": "3.1.1",
+    "pyogrio": "0.13.0",
+    "pyarrow": "26.0.0",
+    "pyproj": "3.8.0"
+  },
+  "required_inputs": [
+    "Original paper CSV, user is downloading USDMDataAvg.csv"
+  ],
+  "source_checks": {
+    "dryad_metadata": "https://datadryad.org/api/v2/versions/283308/files",
+    "dryad_csv": {
+      "name": "USDMDataAvg.csv",
+      "bytes": 1588620226,
+      "sha256": "ae7da84c03dbd0573b32b80f823503bd4fad7ce294e5f5b496f4ddace155910f",
+      "public_download_http": 403,
+      "api_download_http": 401
+    },
+    "usgs_wbd_layer": "https://hydrowfs.nationalmap.gov/arcgis/rest/services/wbd/MapServer/4",
+    "note": "Full regions 01–18 USGS HUC8 snapshot downloaded. Grid CSV download still blocked by Dryad; user will provide local file."
+  },
+  "selected_grid": "Original Dryad USDMDataAvg.csv, 2024-03-14",
+  "wbd": {
+    "path": "/Users/macbook/QTDL/USGS/bronze/data/grid_huc_inputs/wbd/WBDHU8.gpkg",
+    "features": 2193,
+    "crs": "EPSG:4326",
+    "bytes": 444301312,
+    "repairs": [
+      {
+        "huc8": "01100004",
+        "reason": "Ring Self-intersection[-73.0254787636733 41.2132910526924]",
+        "method": "shapely.make_valid",
+        "relative_area_change_epsg5070": 6.825295645260713e-15
+      },
+      {
+        "huc8": "18050005",
+        "reason": "Ring Self-intersection[-123.014188873085 37.9433382644265]",
+        "method": "shapely.make_valid",
+        "relative_area_change_epsg5070": 3.130108149147469e-15
+      }
+    ],
+    "sha256": "90ac8ea557cce67130d879c3be4403b1dd715965785e93bbd9f6eb03eca91ec3"
+  }
+}

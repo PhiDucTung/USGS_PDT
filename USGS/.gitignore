@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+.pytest_cache/
+*.egg-info/
+data/
+.env
+
+# Keep the large original reference CSV out of source commits.
+/doi_10_5061_dryad_g1jwstqw7__v20240314/USDMDataAvg.csv
+
+# Local archive pieces are not part of source commits.
+/data_archives/
+
+# Physical Medallion datasets; commit documentation and code only.
+/bronze/data/
+/silver/data/
+/gold/data/
