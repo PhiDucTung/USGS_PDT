@@ -185,12 +185,13 @@ HUC8/6/4. Cần trích lưới gốc trước khi chạy `build-gold`.
 
 | Tầng | Dữ liệu thực tế | Hướng dẫn |
 |---|---|---|
-| Bronze | `bronze/data/`: raw, normalized, catalog, checkpoint, dữ liệu nguồn và báo cáo crawl | [Bronze](bronze/README.md) |
-| Silver | `silver/data/`: preprocessed, medallion/silver và medallion/weekly | [Silver](silver/README.md) |
-| Gold | `gold/data/medallion/`: gold, gold_filled và gold_local_20x20 | [Gold](gold/README.md) |
+| Bronze | `bronze/data/`: raw, normalized, catalog, checkpoint, dữ liệu nguồn và báo cáo crawl; `bronze/scripts/`: entrypoint lệnh Bronze | [Bronze](bronze/README.md) |
+| Silver | `silver/data/`: preprocessed, medallion/silver và medallion/weekly; `silver/scripts/`: entrypoint lệnh Silver | [Silver](silver/README.md) |
+| Gold | `gold/data/medallion/`: gold, gold_filled và gold_local_20x20; `gold/scripts/`: entrypoint lệnh Gold | [Gold](gold/README.md) |
 
-Các thư mục `bronze/`, `silver/`, `gold/` chứa dữ liệu thật và tài liệu theo tầng.
+Các thư mục `bronze/`, `silver/`, `gold/` chứa dữ liệu, tài liệu và mã xử lý theo
+tầng giống bố cục của repo USDM_PQA. `usgs_pipeline/` giữ CLI, module tương thích
+cho import cũ và tiện ích dùng chung của Medallion.
 Cấu hình mới dùng `bronze/data/`; dữ liệu đã phân tầng vật lý và không còn thư mục
-`data/` ở gốc. `usgs_pipeline/` giữ mã thực thi; các file dữ liệu ở ba tầng được
-`.gitignore` loại khỏi commit. Lệnh `run` kết thúc
-ở tiền xử lý tại trạm; dùng `build-gold` riêng để tạo sản phẩm lưới.
+`data/` ở gốc. Các file dữ liệu ở ba tầng được `.gitignore` loại khỏi commit. Lệnh
+`run` kết thúc ở tiền xử lý tại trạm; dùng `build-gold` riêng để tạo sản phẩm lưới.

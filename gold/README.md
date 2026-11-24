@@ -1,11 +1,15 @@
 # Gold — chỉ số dòng chảy theo ô lưới/tuần
 
 ```sh
-.venv/bin/python -m usgs_pipeline gold --weekly-run data/medallion/weekly/RUN_ID
-.venv/bin/python -m usgs_pipeline validate-gold --gold-run data/medallion/gold/RUN_ID
+.venv/bin/python gold/scripts/run.py gold --weekly-run silver/data/medallion/weekly/RUN_ID
+.venv/bin/python gold/scripts/run.py validate-gold --gold-run gold/data/medallion/gold/RUN_ID
 ```
 
-Đầu ra vật lý ở `gold/data/medallion/gold/<run_id>/` (có liên kết tại `data/medallion/gold/<run_id>/`): `grid_weekly/`, `lineage/`,
+Mã Gold nằm trong `gold/scripts/medallion.py` và `gold/scripts/fill_gold.py`;
+entrypoint là `gold/scripts/run.py`. Có thể tạo cả chuỗi Bronze → Silver → Gold
+bằng `gold/scripts/run.py build-gold --config config.example.toml`.
+
+Đầu ra vật lý ở `gold/data/medallion/gold/<run_id>/`: `grid_weekly/`, `lineage/`,
 `report.json` và `manifest.json`. Khóa duy nhất là `(grid_id, week_date)`.
 Mỗi tuần có toàn bộ lưới đầu vào; 156 thứ Ba trong 2020–2022.
 

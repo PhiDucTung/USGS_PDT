@@ -16,7 +16,7 @@ gold = ["pandas>=2.2,<4", "numpy>=2,<3", "geopandas>=1,<2", "shapely>=2,<3", "py
 usgs-pipeline = "usgs_pipeline.cli:main"
 
 [tool.setuptools.packages.find]
-include = ["usgs_pipeline*", "grid_huc*"]
+include = ["usgs_pipeline*", "grid_huc*", "bronze*", "silver*", "gold*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests", "grid_huc"]

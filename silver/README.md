@@ -1,13 +1,16 @@
 # Silver — trạm/ngày, lưới/HUC và trạm/tuần
 
-Chạy từ gốc repo sau khi Bronze hoàn tất:
+Mã Silver nằm trong `silver/scripts/preprocess.py` và
+`silver/scripts/medallion.py`; entrypoint là `silver/scripts/run.py`. Chạy sau khi
+Bronze hoàn tất:
 
 ```sh
-.venv/bin/python -m usgs_pipeline silver --config config.example.toml
-.venv/bin/python -m usgs_pipeline weekly --silver-run data/medallion/silver/RUN_ID
+.venv/bin/python silver/scripts/run.py silver --config config.example.toml
+.venv/bin/python silver/scripts/run.py weekly --silver-run silver/data/medallion/silver/RUN_ID
+.venv/bin/python silver/scripts/run.py preprocess --config config.example.toml --max-donors 20
 ```
 
-Silver lưu tại `silver/data/medallion/silver/<run_id>/`; weekly tại `silver/data/medallion/weekly/<run_id>/`. Đường dẫn `data/medallion/` cũ là liên kết.
+Silver lưu tại `silver/data/medallion/silver/<run_id>/`; weekly tại `silver/data/medallion/weekly/<run_id>/`.
 
 Silver lưu `station_daily/`, `stations.parquet`, `grid.parquet`, `grid_huc.parquet`,
 `station_grid.parquet` và `review_unresolved.parquet`. Một dòng/trạm/ngày giữ
